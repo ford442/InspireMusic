@@ -27,7 +27,8 @@ torchaudio
 uvicorn
 fastapi
 fastapi-cli
-WeTextProcessing
+pynini==2.1.6
+WeTextProcessing==1.0.4.1
 transformers==4.46.3
 accelerate
 huggingface-hub
