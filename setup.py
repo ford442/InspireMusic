@@ -38,7 +38,7 @@ requirements = {
 		"networkx==3.1",
 		"omegaconf==2.3.0",
 		"onnx==1.17.0",
-		"protobuf==4.25",
+		"protobuf==5.29.5",
 		"pydantic==2.7.0",
 		"rich==13.7.1",
 		"soundfile==0.12.1",
