@@ -100,7 +100,7 @@ class InspireMusicModel:
 
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    @torch.inference_mode()
+    @torch.no_grad()
     def inference(self,
                   task: str = 'text-to-music',
                   text: str = None,
