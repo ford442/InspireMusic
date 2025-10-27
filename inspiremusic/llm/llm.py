@@ -50,7 +50,7 @@ class LLM(torch.nn.Module):
             length_normalized_loss: bool = True,
             lsm_weight: float = 0.0,
             frozen_input_embed: bool = False,
-            dtype: str = "bf16",
+            dtype: str = "fp16",
             text_token_size: int = 151643,
             **kwargs,
     ):
