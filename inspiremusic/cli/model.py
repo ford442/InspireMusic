@@ -194,7 +194,7 @@ class InspireMusicModel:
         wav = wav.cpu().detach()
         return wav
 
-    @torch.inference_mode()
+    @torch.no_grad()
     def inference(self, text, audio_token, audio_token_len, text_token, text_token_len, embeddings=None,
                   prompt_text=torch.zeros(1, 0, dtype=torch.int32),
                   llm_prompt_audio_token=torch.zeros(1, 0, dtype=torch.int32),
