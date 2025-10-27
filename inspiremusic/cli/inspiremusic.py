@@ -69,7 +69,7 @@ class InspireMusic:
                         )
         del configs
 
-    @torch.inference_mode()
+    @torch.no_grad()
     def inference(self, task, text, audio, time_start, time_end, chorus, stream=False, sr=24000):
         if task == "text-to-music":
             for i in tqdm(self.frontend.text_normalize(text, split=True)):
@@ -110,7 +110,7 @@ class InspireMusic:
         else:
             print("Currently only support text-to-music and music continuation tasks.")
 
-    @torch.inference_mode()
+    @torch.no_grad()
     def cli_inference(self, text, audio_prompt, time_start, time_end, chorus, task, stream=False, duration_to_gen=30, sr=24000):
         if task == "text-to-music":
             model_input = self.frontend.frontend_text_to_music(text, time_start, time_end, chorus)
@@ -126,7 +126,7 @@ class InspireMusic:
             yield model_output
             start_time = time.time()
 
-    @torch.inference_mode()
+    @torch.no_grad()
     def inference_zero_shot(self, text, prompt_text, prompt_audio_16k, stream=False, sr=24000):
         prompt_text = self.frontend.text_normalize(prompt_text, split=False)
         for i in tqdm(self.frontend.text_normalize(text, split=True)):
@@ -138,7 +138,7 @@ class InspireMusic:
                 logging.info('yield audio len {}, rtf {}'.format(audio_len, (time.time() - start_time) / audio_len))
                 yield model_output
                 start_time = time.time()
-    @torch.inference_mode()
+    @torch.no_grad()
     def inference_instruct(self, text, spk_id, instruct_text, stream=False, sr=24000):
         if self.frontend.instruct is False:
             raise ValueError('{} do not support instruct inference'.format(self.model_dir))
